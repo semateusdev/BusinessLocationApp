@@ -3,17 +3,17 @@
     <div class="w-1/3 flex items-center gap-4">
       <mat-form-field class="flex-1">
         <mat-label>Buscar</mat-label>
-        <input matInput placeholder="Buscar" (keyup)="applyFilter()" [formControl]="searchInput">
+        <input matInput placeholder="Buscar" (keyup)="applyFilter()" [formControl]="searchInput" #input>
       </mat-form-field>
-      <button mat-flat-button color="warn" class="w-fit" (click)="searchInput.reset(); applyFilter()">Eliminar búsqueda</button>
+      <button mat-flat-button color="warn" class="w-fit" (click)="searchInput.reset(); applyFilter()" [disabled]="input.value === ''">Eliminar búsqueda</button>
     </div>
-    <span class="w-12 h-12 rounded-full bg-[#009d55] text-slate-100 text-3xl font-bold flex justify-center items-center">+</span>
+    <span class="w-12 h-12 rounded-full bg-secondary text-slate-100 text-3xl font-bold flex justify-center items-center cursor-pointer" (click)="eventAdd.emit()">+</span>
   </div>
   <div class="w-full rounded-xl overflow-hidden">
-      <table mat-table class="mat-elevation-z8 !bg-[#091838] !bg-opacity-40" [dataSource]="dataSource">
+      <table mat-table class="mat-elevation-z8 !bg-[#091838] !bg-opacity-40" [dataSource]="dataSource" matSort>
         @for (item of headerData; track $index) {
           <ng-container [matColumnDef]="item.key">
-              <th mat-header-cell *matHeaderCellDef class="!bg-[#0a255f]"> {{item.title}} </th>
+              <th mat-header-cell *matHeaderCellDef class="!bg-[#0a255f]" mat-sort-header> {{item.title}} </th>
               <td mat-cell *matCellDef="let element" class="!w-fit"> 
                 @if (item.key !== 'actions'){
                   {{element[item.key]}} 
@@ -34,5 +34,6 @@
           <td class="mat-cell text-slate-100 text-lg py-6 text-center w-full" colspan="4">No se encontraron datos</td>
         </tr>
       </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [pageSize]="10" class="!bg-[#0a255f]"></mat-paginator>
   </div>
 </div>

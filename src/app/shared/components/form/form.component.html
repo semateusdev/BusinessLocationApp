@@ -1,0 +1,43 @@
+<form action="" class="w-full flex flex-wrap gap-4" [formGroup]="form" (ngSubmit)="saveData()">
+    @for (field of fields; track $index) {
+
+        @if (field.type !== 'checkbox' && field.type !== 'image') {
+            <mat-form-field class="!w-[48%]">
+                <mat-label>{{field.label}}</mat-label>
+                @switch (field.type) {
+                    @case ('input') {
+                        <input matInput [type]="field.inputType || 'text'" [formControlName]="field.formControlKey">
+                    }
+                    @case ('select') {
+                        <mat-select [formControlName]="field.formControlKey">
+                            @for (option of field.selectOptions; track $index) {
+                                    <mat-option [value]="option.name">{{option.name}}</mat-option>
+                            }
+                        </mat-select>
+                    }
+                    @case ('textArea') {
+                        <textarea matInput></textarea>
+                    }
+                }
+            </mat-form-field>
+        }@else if(field.type === 'checkbox'){
+            <div class="w-full">
+                <mat-checkbox [formControlName]="field.formControlKey">{{field.label}}</mat-checkbox>
+            </div>
+        }@else {
+            <div class="w-[48%]">
+                <label [for]="field.formControlKey" class="text-xl text-secondary font-bold">{{field.label}}</label>
+                <div class="flex justify-between items-center">
+                    <input [id]="field.formControlKey" type="file" (change)="setImage($event, field.formControlKey)" class="text-slate-100 max-w-[70%]">
+                    <img [src]="field.url ?? 'assets/img/no-image.jpg'" [alt]="field.label" class="w-32 h-32 rounded-xl">
+                </div>
+            </div>
+        }
+        
+        
+    }
+    <div class="w-full flex justify-center gap-8 mt-8">
+        <button mat-flat-button color="primary" type="submit">Guardar</button>
+        <button mat-flat-button type="button" (click)="cancelBtn.emit()">Cancelar</button>
+    </div>
+</form>

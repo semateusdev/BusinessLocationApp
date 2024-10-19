@@ -6,8 +6,17 @@ export const routes: Routes = [
         loadComponent: () => import('./page/home/home.component').then(c => c.HomeComponent)
     },
     {
-        path: 'locations',
-        loadComponent: () => import('./page/locations/locations-list/locations-list.component').then(c => c.LocationsListComponent)
+        path: 'business',
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./page/business/bussiness-list/business-list.component').then(c => c.BusinessListComponent)
+            },
+            {
+                path: 'create',
+                loadComponent: () => import('./page/business/create-business/create-business.component').then(c => c.CreateBusinessComponent)
+            }
+        ]
     },
     {
         path: '**',
