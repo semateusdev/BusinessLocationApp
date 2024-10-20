@@ -28,7 +28,7 @@ export class BusinessService {
     if(!currentBusinessData){
       const  headers = new HttpHeaders({
         'x-rapidapi-host': 'local-business-data.p.rapidapi.com',
-        'x-rapidapi-key': '08f3d01871mshe73d3c9dfa17223p1d9981jsn22d54eaed3f9'
+        'x-rapidapi-key': 'caecd96f56msh69a61554b2f7ffep1b04e3jsnf926482a9b83'
       });
       let locationsDB: ShortBusinessInfo[] = [];
       try {
