@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   public options: ItemWithAdditionalData<{url: string}>[] = [
     {id: HeaderOptions.HOME, name: 'Inicio',data: {url: '/home'}},
-    {id: HeaderOptions.TABLE, name: 'Datos',data: {url: '/locations'}},
+    {id: HeaderOptions.TABLE, name: 'Datos',data: {url: '/business'}},
     {id: HeaderOptions.MAP, name: 'Mapa',data: {url: '/map'}},
   ]
 

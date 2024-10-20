@@ -1,27 +1,13 @@
-# BusinessLocationApp
+# PETSHOPAPP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.10.
+Es un proyecto desarrollado en Angular version 17.3.10, app la cual permite consumir la API de Local Business Data (https://rapidapi.com/letscrape-6bRBa3QguO5/api/local-business-data/playground), obteniendo información de los petshop en Colombia. asi como realizar las operaciones de CRUD de forma temporal guardando la información en localstorage hasta recargar la pagina, en ese caso volveria la data original, tambien permite ubicar los negocios obtenidos en el mapa. Debido a las restricciones para el consumo de la API seleccionada, se guardo un mock de datos para el caso de que la suscripción no permita mas peticiones y se pueda seguir usando la app sin problema, de igual forma si se desea probar con alguna suscripción propia se puede remplazar el x-rapidapi-key desde el servicio de business.service.
 
-## Development server
+## Correr el proyecto:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para correr el proyecto se debe inicialmente se debe ejecutar el comando `npm install` desde la carpeta raiz del proyecto, una vez instaladas las dependencias se puede ejectuar `ng serve` o `npm run start` de esa forma quedaria corriendo el proyecto en: `http://localhost:4200/`.
 
-## Code scaffolding
+## Datos tecnicos:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Se utiliza la libreria `Tailwind css` para poder realizar una maquetación de forma mas rapida y de igual forma se usa `Angular Material` bajo lo solicitado en la prueba.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para el resonsive se tuvo en cuenta la siguientes medidas: - FullHD: 1920 x 1080 - HD: 1280 X 720 - iPad: 810 x 1080 - iPad mini: 768 x 1024 - iPhone 11 pro

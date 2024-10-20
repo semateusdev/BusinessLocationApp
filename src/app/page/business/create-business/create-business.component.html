@@ -1,11 +1,11 @@
-<section class="w-[100vw] h-[100vh] bg-primary-alter flex py-8 px-8 justify-center gap-2">
-    <div class="cursor-pointer" (click)="backSection()">
-        <mat-icon aria-hidden="false" class="text-slate-200 cursor-pointer text-5xl !w-40 !h-40" [fontIcon]="'arrow_back'"></mat-icon>
+<section class="w-[100vw] h-[100vh] bg-primary-alter flex p-4 HD:p-8 justify-center gap-2">
+    <div class="cursor-pointer w-fit hidden tablet:block" (click)="backSection()">
+        <mat-icon aria-hidden="false" class="text-slate-200 cursor-pointer tablet:text-4xl HD:text-5xl !w-fit !h-fit" [fontIcon]="'arrow_back'"></mat-icon>
     </div>
-    <div class="w-2/3 h-fit max-h-full overflow-auto bg-slate-500 bg-opacity-35 backdrop-blur-[15px] rounded-xl p-10">
-        <p class="text-3xl text-slate-200 !mb-12">Registrar Nuevo Petshop</p>
+    <div class="flex-1 HD:flex-none HD:w-2/3 h-fit max-h-full overflow-auto bg-[#454545] bg-opacity-35 backdrop-blur-[15px] rounded-xl p-10">
+        <p class="text-3xl text-slate-200 !mb-12">{{title}}</p>
         <p class="text-xl text-secondary font-bold">Datos del comercio</p>
-        <app-form [fields]="formFields" (sendData)="create($event)" (cancelBtn)="backSection()"></app-form>
+        <app-form [fields]="formFields" [saveButtonText]="txtButton" (sendData)="saveData($event)" (cancelBtn)="backSection()"></app-form>
     </div>
 
 </section>

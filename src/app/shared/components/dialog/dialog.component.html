@@ -1,0 +1,18 @@
+<section class="p-4">
+    <h2 class="text-secondary font-bold">{{data.title}}</h2>
+    <mat-dialog-content>
+        @if (data.text) {
+            <p class="text-slate-100 text-lg text-center tablet:text-start">{{data.text}}</p>
+        }
+        @if (data.template) {
+            <div class="w-full">
+                <ng-container *ngTemplateOutlet="data.template"></ng-container>
+            </div>
+        }
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-flat-button color="primary" (click)="close('cancel')">{{data.buttonCancel ?? 'Cancelar'}}</button>
+        <button mat-flat-button color="accent" (click)="close('accept')" >{{data.buttonAccept ?? 'Aceptar'}}</button>
+    </mat-dialog-actions>
+</section>

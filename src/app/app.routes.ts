@@ -15,8 +15,16 @@ export const routes: Routes = [
             {
                 path: 'create',
                 loadComponent: () => import('./page/business/create-business/create-business.component').then(c => c.CreateBusinessComponent)
+            },
+            {
+                path: 'edit/:id',
+                loadComponent: () => import('./page/business/create-business/create-business.component').then(c => c.CreateBusinessComponent)
             }
         ]
+    },
+    {
+        path: 'map',
+        loadComponent: () => import('./page/map/map.component').then(c => c.MapComponent)
     },
     {
         path: '**',

@@ -1,9 +1,9 @@
-<div class="w-full h-16 bg-gradient-to-r from-primary via-[#0e368f] to-primary py-4 px-6 flex justify-between">
+<div class="w-full h-fit bg-gradient-to-r from-primary via-[#0e368f] to-primary py-4 px-6 flex flex-wrap justify-between">
     <p class="text-[#009d55] text-3xl font-bold">LocationsAPP</p>
-    <div class="flex gap-10 px-8">    
+    <div class="flex justify-center gap-10 px-8 w-full tablet:w-fit">    
         @for (option of options; track $index) {
             <div [routerLink]="option.data.url" [routerLinkActive]="'border-b-4 border-[#009d55]'" class="cursor-pointer">
-                <p class="text-slate-100 text-lg">{{option.name}}</p>
+                <p class="text-slate-100 text-lg !my-2">{{option.name}}</p>
             </div>
         }
     </div>

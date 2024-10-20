@@ -1,6 +1,6 @@
 <div class="w-full flex-col">
   <div class="w-full flex justify-between pr-4">
-    <div class="w-1/3 flex items-center gap-4">
+    <div class="HD:w-1/2 FHD:w-1/3 flex items-center gap-4">
       <mat-form-field class="flex-1">
         <mat-label>Buscar</mat-label>
         <input matInput placeholder="Buscar" (keyup)="applyFilter()" [formControl]="searchInput" #input>
@@ -20,7 +20,7 @@
                 }@else {
                   <div class="flex gap-8">
                     @for (action of tableActions; track $index) {
-                      <mat-icon aria-hidden="false" class="text-[#009d55] cursor-pointer" [fontIcon]="action.iconName"></mat-icon>
+                      <mat-icon aria-hidden="false" class="text-[#009d55] cursor-pointer" [fontIcon]="action.iconName" (click)="selectAction(action, element)"></mat-icon>
                     }
                   </div>
                 }

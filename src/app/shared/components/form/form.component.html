@@ -2,11 +2,11 @@
     @for (field of fields; track $index) {
 
         @if (field.type !== 'checkbox' && field.type !== 'image') {
-            <mat-form-field class="!w-[48%]">
+            <mat-form-field class="!w-full HD:!w-[48%]">
                 <mat-label>{{field.label}}</mat-label>
                 @switch (field.type) {
                     @case ('input') {
-                        <input matInput [type]="field.inputType || 'text'" [formControlName]="field.formControlKey">
+                        <input matInput [type]="field.inputType || 'text'" [formControlName]="field.formControlKey" (keydown)="validateInput($event, field.inputType!)">
                     }
                     @case ('select') {
                         <mat-select [formControlName]="field.formControlKey">
@@ -25,11 +25,13 @@
                 <mat-checkbox [formControlName]="field.formControlKey">{{field.label}}</mat-checkbox>
             </div>
         }@else {
-            <div class="w-[48%]">
+            <div class="w-full HD:w-[48%]">
                 <label [for]="field.formControlKey" class="text-xl text-secondary font-bold">{{field.label}}</label>
                 <div class="flex justify-between items-center">
-                    <input [id]="field.formControlKey" type="file" (change)="setImage($event, field.formControlKey)" class="text-slate-100 max-w-[70%]">
-                    <img [src]="field.url ?? 'assets/img/no-image.jpg'" [alt]="field.label" class="w-32 h-32 rounded-xl">
+                    <input [id]="field.formControlKey" type="file" (change)="setImage($event, field.formControlKey)" 
+                        class="text-slate-100 max-w-[70%] hidden" #input>
+                    <button mat-flat-button color="primary" type="button" (click)="input.click()">Seleccionar</button>
+                    <img [src]="field.url ?? 'assets/img/no-image.jpg'" [errorImage]="'assets/img/no-image.jpg'" [alt]="field.label" class="w-32 h-32 rounded-xl">
                 </div>
             </div>
         }
@@ -37,7 +39,7 @@
         
     }
     <div class="w-full flex justify-center gap-8 mt-8">
-        <button mat-flat-button color="primary" type="submit">Guardar</button>
+        <button mat-flat-button color="primary" type="submit">{{saveButtonText}}</button>
         <button mat-flat-button type="button" (click)="cancelBtn.emit()">Cancelar</button>
     </div>
 </form>

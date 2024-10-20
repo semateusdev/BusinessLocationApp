@@ -76,6 +76,7 @@ export interface WorkingHours {
     Wednesday: string[];
 }
 export interface ShortBusinessInfo {
+    id: string;
     name: string;
     phone_number: string;
     street_address: string;
@@ -85,6 +86,7 @@ export interface ShortBusinessInfo {
     latitude:           number;
     longitude:          number;
     rating:             number | null;
-    website?:            string;
+    website:            string;
     
+    [key: string]: string | number | null;
 }

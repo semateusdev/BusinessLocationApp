@@ -1,0 +1,29 @@
+<section class="w-[100vw] h-[100vh] flex flex-col">
+    <app-header class="h-fit"></app-header>
+    <div class="w-full flex-1 relative">
+        <canvas #map class="w-full h-full"></canvas>
+        <div class="w-[70%] tablet:w-[40%] HD:w-[30%] h-[50%] tablet:h-[80%] bg-[#091838] bg-opacity-45 backdrop-blur-[10px] absolute left-4 rounded-xl overflow-hidden flex flex-col" cdkDragBoundary=".map-container" cdkDrag>
+            <div class="w-full h-[8%] text-center cursor-move" cdkDragHandle>
+                <mat-icon class="text-4xl tablet:text-5xl !w-fit !h-fit rotate-90 text-[#f1f1f1cc]" fontIcon="drag_indicator"></mat-icon>
+            </div>
+            <div class="w-full h-[92%] p-4 flex flex-col">
+                <div class="h-fit border-y border-[#f1f1f1cc] flex items-center p-2">
+                    <p class="text-base HD:text-lg text-[#002d8f] font-bold w-[50%] !m-0 text-center">Nombre</p>
+                    <p class="text-base HD:text-lg text-[#002d8f] font-bold w-[35%] !m-0 text-center">Ciudad</p>
+                    <p class="text-base HD:text-lg text-[#002d8f] font-bold w-[15%] !m-0 text-center">Ubicar</p>
+                </div>
+                <div class="flex-1 overflow-auto">
+                    @for (item of business; track $index) {
+                        <div class="border-y border-[#f1f1f1cc] flex items-center p-2 hover:shadow-item">
+                            <p class="text-base HD:text-lg text-slate-100 w-[50%] !m-0 text-nowrap text-ellipsis overflow-hidden">{{item.name}}</p>
+                            <p class="text-base HD:text-lg text-slate-100 w-[35%] !m-0 text-nowrap text-ellipsis overflow-hidden">{{item.city}}</p>
+                            <div class="w-[15%] flex justify-center cursor-pointer" (click)="centerBusiness(item)">
+                                <mat-icon class="text-3xl !w-fit !h-fit text-[#f1f1f1cc]" fontIcon="pin_drop"></mat-icon>
+                            </div>
+                        </div>
+                    }
+                </div>                
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,61 @@
+<section class="w-full">
+    <button mat-flat-button color="primary" class="w-fit mb-4" (click)="goCreate()">Registrar Petshop</button>
+    <div class="w-full flex bg-[#0a255f] p-4">
+        <p class="text-slate-100 text-lg font-bold w-[70%] !m-0">Nombre</p>
+        <p class="text-slate-100 text-lg font-bold w-[30%] !m-0">Acciones</p>
+    </div>
+    <mat-accordion>
+        @for (business of businessList; track $index) {
+            <mat-expansion-panel hideToggle class="!bg-[#091838]">
+                <mat-expansion-panel-header>
+                  <div class="w-full flex">
+                    <p class="text-slate-100 text-base font-bold w-[70%] !m-0 text-nowrap overflow-hidden text-ellipsis">{{business.name}}</p>
+                    <div class="w-[30%] flex items-center justify-center gap-4 tablet:gap-8">
+                        @for (action of tableActions; track $index) {
+                            <mat-icon aria-hidden="false" class="text-[#009d55] cursor-pointer" 
+                            [fontIcon]="action.iconName" (click)="selectAction($event, action, business)"></mat-icon>
+                        }
+                    </div>
+                  </div>
+                </mat-expansion-panel-header>
+                <div class="w-full flex flex-wrap text-nowrap overflow-hidden text-ellipsis">
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">Dirección: </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.street_address}}</p>
+                    </div>
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">Teléfono: </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.phone_number}}</p>
+                    </div>
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">Ciudad: </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.city}}</p>
+                    </div>
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">Página web: </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.website}}</p>
+                    </div>
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">Latitud: </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.latitude}}</p>
+                    </div>
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">Longitud: </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.longitude}}</p>
+                    </div>
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">Calificación: </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.rating}}</p>
+                    </div>
+                    <div class="w-full tablet:w-1/2 flex gap-4 mb-4">
+                        <p class="text-slate-100 text-sm font-semibold !m-0">¿Está abierto 24 horas? </p>
+                        <p class="text-slate-100 text-sm !m-0">{{business.open_24}}</p>
+                    </div>
+                    <img [src]="business.photo_url || 'assets/img/no-image.jpg'" [errorImage]="'assets/img/no-image.jpg'" 
+                        alt="Imagen de negocio" class="w-full tablet:w-1/4 h-[13rem] object-contain">
+                </div>
+            </mat-expansion-panel>
+        }
+        
+    </mat-accordion>
+</section>

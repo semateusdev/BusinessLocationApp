@@ -1,4 +1,4 @@
-import { FormControl } from "@angular/forms";
+import { FormControl, Validators } from "@angular/forms";
 import { Item } from "../../interface/items.interface";
 
 export interface FieldsForm {
@@ -9,6 +9,7 @@ export interface FieldsForm {
     placeholder?: string;
     inputType?: 'text' | 'password' | 'number' | 'email';
     selectOptions?: Item[];
-    required?: boolean;
+    validators: Validators[];
     url?: string;
+    value?: string | number | boolean | null;
 }

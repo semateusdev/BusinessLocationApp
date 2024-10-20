@@ -24,6 +24,7 @@ export class TableComponent implements OnChanges{
   @Input() tableData: TableData[] = [];
   @Input() tableActions: TableActions[] = [];
   @Output() eventAdd: EventEmitter<void> = new EventEmitter();
+  @Output() selectedAction: EventEmitter<{action: TableActions, item: TableData}> = new EventEmitter();
   public searchInput: FormControl = new FormControl();
   
   displayedColumns: string[] = [];
@@ -45,6 +46,10 @@ export class TableComponent implements OnChanges{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  selectAction(action: TableActions, item: TableData) {
+    this.selectedAction.emit({action, item});
   }
   
 

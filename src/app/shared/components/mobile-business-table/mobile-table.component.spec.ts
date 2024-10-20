@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BusinessListComponent } from './business-list.component';
+import { MobileTableComponent } from './mobile-table.component';
 
-describe('LocationsListComponent', () => {
-  let component: BusinessListComponent;
-  let fixture: ComponentFixture<BusinessListComponent>;
+describe('MobileTableComponent', () => {
+  let component: MobileTableComponent;
+  let fixture: ComponentFixture<MobileTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BusinessListComponent]
+      imports: [MobileTableComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(BusinessListComponent);
+    fixture = TestBed.createComponent(MobileTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
