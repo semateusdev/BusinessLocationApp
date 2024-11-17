@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/business-location-app",
+    "public": "dist/business-location-app/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
